@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/0bbf47f20a.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Design2</title>
+      
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Teko&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+
+        body{
+            background-color: rgba(237,235,245,0.5);
+        }
+        .menu{
+            padding: 30px;
+            background-color: #fff;
+            width: 100%;
+            height: 100vh;
+        }
+        .task-content{
+/*            font-family: 'Dosis', sans-serif;*/
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.3em;
+        }
+        .add-task-wrap{
+            width: 80%;
+            border-radius: 20px;
+            margin: auto;
+            background-color: #fff;/*RGBA(64, 78, 95, 1.00)*/
+            padding: 10px;
+            -webkit-box-shadow: 0px 10px 50px -13px rgba(0,0,0,0.2);
+            -moz-box-shadow: 0px 10px 50px -13px rgba(0,0,0,0.2);
+            box-shadow: 0px 10px 50px -13px rgba(0,0,0,0.2);
+        }
+        .add-task-wrap .task-bar{
+            width: 100%;
+            height: 60px;
+        }
+        .add-task-wrap .task-bar img{
+            position: absolute;
+            width: 50px;
+            margin-top: 5px;
+            margin-left: 0px;
+            cursor: pointer;
+            opacity: .8;
+        }
+        #task-form{
+            
+        }
+        #task-form input{
+            height: 60px;
+            width: 100%;
+            padding-left: 60px;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: #404E5F;
+            font-size: 1em;
+        }
+        #task-form input::placeholder{
+            color: grey;
+            font-size: 1.1em;
+        }
+        .logo h1{
+            margin: 0;
+            line-height: 60px;
+            font-family: 'Lobster', cursive;
+            pointer-events: none;
+        }
+        .logo h1 span{
+            position: absolute;
+            font-size: .4em;
+            margin-top: 7px;
+            margin-left: 5px;
+            color: rgba(0,0,0,.5);
+            font-family: 'Abel', sans-serif;
+            pointer-events: none;
+        }
+        .logo h1 img{
+            width: 35px;
+            margin-bottom: 5px;
+            pointer-events: none;
+        }
+        .row > [class^=col]:first-of-type { 
+            display: flex;
+        }
+        .logo{
+            height: 60px;
+        }
+        .menu-items{
+            margin-top: 30px;
+/*            background-color: gainsboro;*/
+/*
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+*/
+        }
+        p{
+            margin: 0;
+        }
+        .menu-items .item{
+/*            border: 1px solid;*/
+            padding: 10px;
+            cursor: pointer;
+/*            color: rgba(0,0,0,.6);*/
+            font-family: 'Dosis', sans-serif;
+            font-size: 1.2em;
+        }
+        .menu-items .item img{
+            width: 30px;
+            margin-right: 8px;
+            pointer-events: none;
+/*            opacity: .7;*/
+        }
+        .menu-items .item .notification{
+/*            background-color: rgba(0,0,0,.2);*/
+            position: absolute;
+/*            top: -25px;*/
+/*            left: 95%;*/
+/*            transform: translateX(-50%);*/
+            margin-top: -25px;
+            right: 30px;
+            background-color: rgba(0,0,0,.4);
+            color: #fff;
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            display: none;
+        }
+        .user-notice{
+            position: relative;
+            width: 100%;
+            height: 90px;
+            background-color: #1F2832;
+            margin-bottom: 20px;
+            padding: 10px
+        }
+        .sm-screen-header{
+            height: 90px;
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: none;
+        }
+        .sm-screen-header .logo{
+            margin-top: 5px;
+        }
+        .user-notice h1{
+            margin: 0;
+            color: #F2F2F2;
+            line-height: 70px;
+            font-family: 'Cabin', sans-serif;
+            font-size: 1.5em;
+            padding-left: 20px;
+        }
+        .user-notice table{
+            position: absolute;
+            top: 0;
+            right: 0px;
+            height: 90px;
+            color: #fff;
+        }
+        table td{
+            padding: 0;
+/*            border: 1px solid red;*/
+            text-align: center;
+            text-transform: uppercase;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: 'Teko', sans-serif;
+        }
+        #date{
+            font-size: 3em;
+            color: khaki;
+            text-shadow: 0px 0px 4px RGBA(255, 255, 255, .5);
+            letter-spacing: .06em;
+        }
+        #month, #day{font-size: 1.1em;font-family: 'Righteous', cursive;}
+        #month{
+            background-color: RGBA(64, 78, 95, 1.00);
+            text-shadow: 0px 0px 4px RGBA(255, 255, 255, .3);
+            letter-spacing: .06em;
+        }
+        #day{
+            background-color: RGBA(255, 255, 255, .2);
+            text-shadow: 0px 0px 4px RGBA(255, 255, 255, .3);
+            letter-spacing: .06em;
+        }
+        .tasks{
+            padding: 30px;
+/*            background-color: beige;*/
+        }
+        .filter-by{
+        }
+        .filter-by span{
+            position: absolute;
+            right: 10px;
+            height: 40px;
+            width: 80px;
+            border-bottom: 2px solid;
+            line-height: 40px;
+            cursor: pointer;
+            padding-left: 5px;
+            color: rgba(0,0,0,.6);
+        }
+        .filter-by span i{
+            position: absolute;
+            line-height: 45px;
+            right: 5px;
+            color: rgba(0,0,0,.6);
+            font-size: .8em;
+        }
+        .tasks-margin{
+            margin-top: 40px;
+        }
+        .demo h1{
+            position: absolute;
+            top: -60px;
+            font-size: 1.5em;
+            width: 100%;
+            font-family: 'Abel', sans-serif;
+            color: rgba(0,0,0,.6);
+        }
+        .demo{
+            text-align: center;
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-image: url(images/demo-img.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .overlay{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.2);
+            border-radius: 10px;
+        }
+        .play{
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255,255,255,.3);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            line-height: 60px;
+        }
+        .back-btn{
+            position: absolute;
+            transform: rotate(180deg);
+            width: 65px;
+            bottom: 20px;
+            right: 30px;
+            display: none;
+            cursor: pointer;
+            opacity: .8;
+            z-index: 1;
+        }
+        .menu-btn{
+            position: absolute;
+            top: 20px;
+            width: 55px;
+            bottom: 30px;
+            left: 20px;
+            cursor: pointer;
+            opacity: .8;
+        }
+        .mobile-menu{display: none;}
+        
+        @media only screen and (max-width: 770px){
+            .sm-screen-header{
+                display: block;
+            }
+            .menu{
+                display: none;
+            }
+            .mobile-menu{
+                padding: 30px;
+                background-color: #fff;
+                width: 100%;
+                height: 100vh;
+                position: fixed;
+                z-index: 1000;
+                display: none;
+            }
+            .mobile-menu h1{
+                text-align: center;
+                margin: 0;
+                line-height: 60px;
+            }
+            .mobile-menu h1 span{
+                position: absolute;
+                font-size: .4em;
+                margin-top: 7px;
+                margin-left: 5px;
+                color: rgba(0,0,0,.5);
+                font-family: 'Abel', sans-serif;
+            }
+            .menu-items{
+                border: 2px solid rgba(0,0,0,.6);
+                border-radius: 10px;
+                margin-top: 30px;
+                width: 90%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateY(-50%) translateX(-50%);
+            }
+            .menu-items .item{
+                border: 1px solid rgba(0,0,0,.6);
+                padding: 30px;
+            }
+
+            .menu-items .item .notification{
+/*                display: block;*/
+            }
+            .demo{
+                display: none;
+            }
+            .back-btn{
+                display: block;
+            }
+        }
+        @media only screen and (min-width: 1500px){
+            .menu h1{
+                text-align: center;
+                margin: 0;
+                line-height: 60px;
+            }
+        }
+    </style>  
+  </head>
+  <body>
+      <div class="container-fluid">
+          <div class="row display-flex">
+              <div class="col-3 px-0">
+                  <div class="menu">
+                      <div class="logo">
+                          <h1><img src="images/done.png">Taskd<span>byAnup</span></h1>
+                          <img src="images/back.png" class="back-btn">
+                      </div>  
+                      <div class="menu-items">
+                          <div class="item"><p><img src="images/list.png">Tasks </p><div class="notification">3</div></div>
+                          <div class="item"><p><img src="images/completed.png">Completed </p><div class="notification">1</div></div>
+                          <div class="item"><p><img src="images/wrong.png" style="width: 32px;margin-left: -1px;">Missed </p><div class="notification">2</div></div>
+                          <div class="item"><p><img src="images/profile.png">Profile </p><div class="notification">1</div></div>
+                      </div>
+                      <div class="demo">
+                          <h1>Watch the Demo</h1>
+                          <div class="overlay"></div>
+                          <div class="play">
+                              <img src="images/play.png" width="30px;" style="filter: invert(1);">
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="mobile-menu">
+                      <div class="logo">
+                          <h1><img src="images/done.png">Taskd<span>byAnup</span></h1>
+                          <img src="images/back.png" class="back-btn">
+                      </div>  
+                      <div class="menu-items">
+                          <div class="item"><p><img src="images/list.png">Tasks </p><div class="notification">3</div></div>
+                          <div class="item"><p><img src="images/completed.png">Completed </p><div class="notification">1</div></div>
+                          <div class="item"><p><img src="images/wrong.png" style="width: 32px;margin-left: -1px;">Missed </p><div class="notification">2</div></div>
+                          <div class="item"><p><img src="images/profile.png">Profile </p><div class="notification">1</div></div>
+                      </div>
+                      <div class="demo">
+                          <h1>Watch the Demo</h1>
+                          <div class="overlay"></div>
+                          <div class="play">
+                              <img src="images/play.png" width="30px;" style="filter: invert(1);">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-9 col-sm-12 px-0">
+                  <div class="sm-screen-header">
+                      <div class="logo">
+                          <h1><img src="images/done.png">Taskd<span>byAnup</span></h1>
+                          <img src="images/menu.png" class="menu-btn">
+                      </div>
+                  </div>
+                  <div class="user-notice">
+                      
+                      <h1>Good afternoon Anup</h1>
+                      <table>
+                          <tr>
+                              <td rowspan="2" id="date">18</td>
+                              <td id="month">Dec</td>
+                          </tr>
+                          <tr>
+                              <td id="day">Wed</td>
+                          </tr>
+                      </table>
+                  </div>
+                  <div class="task-content">
+                      <div class="add-task-wrap">
+                          <div class="task-bar">
+                              <form action="" id="task-form">
+                                  <img src="images/add.png" id="add-task">
+                                  <input type="text" id="task-input" placeholder="Create Task">
+                              </form>
+                          </div>
+                      </div>
+                      <div class="container-fluid tasks">
+                          <div class="filter-by">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-12">
+                                          <span>Filter <i class="fas fa-chevron-down"></i></span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row tasks-margin">
+                              <div class="col-sm">
+                                  Content
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      
+      <script>
+//          $(window).on('resize', function() {
+////              $('.menu').css("display","none")
+//              $('.menu').css("display","block")
+//              if($('.menu').css("display","none")){
+//                  $('.menu').css("display","block")
+//              }else{
+//                  $('.menu').css("display","none")
+//              }
+//          })
+          $('.menu-btn').click(function(){
+              $('.mobile-menu').fadeIn(200)
+          })
+          $('.back-btn').click(function(){
+              $('.mobile-menu').fadeOut(200)
+          })
+          
+      </script>
+  </body>
+</html>
